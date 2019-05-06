@@ -3,8 +3,10 @@ package org.tpbc.tpbcapi.service;
 import org.springframework.stereotype.Service;
 import org.tpbc.tpbcapi.entity.Attendance;
 import org.tpbc.tpbcapi.entity.Member;
+import org.tpbc.tpbcapi.repository.AttendanceRepository;
 import org.tpbc.tpbcapi.repository.MemberRepository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,9 +15,14 @@ import java.util.Optional;
 public class MemberService {
 
     private MemberRepository memberRepository;
+    private AttendanceRepository attendanceRepository;
 
-    public MemberService(MemberRepository memberRepository) {
+    public MemberService(
+            MemberRepository memberRepository,
+            AttendanceRepository attendanceRepository
+    ) {
         this.memberRepository = memberRepository;
+        this.attendanceRepository = attendanceRepository;
     }
 
     public List<Member> getAllMembers() {
@@ -34,5 +41,9 @@ public class MemberService {
 
     public void addMember(Member member) {
         memberRepository.save(member);
+    }
+
+    public List<Attendance> getMemberAttendanceBetween(long id, LocalDate lower, LocalDate upper) {
+        return attendanceRepository.findAllByMemberBetweenDate(id, lower, upper);
     }
 }

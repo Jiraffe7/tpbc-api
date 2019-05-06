@@ -1,6 +1,6 @@
 package org.tpbc.tpbcapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +18,7 @@ public class Attendance {
 
     private Date date;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 

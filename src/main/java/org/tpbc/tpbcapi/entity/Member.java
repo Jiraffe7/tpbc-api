@@ -1,7 +1,6 @@
 package org.tpbc.tpbcapi.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +19,12 @@ public class Member {
 
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @OneToMany(
+            mappedBy = "member",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<Attendance> attendance = new ArrayList<>();
 }

@@ -12,9 +12,9 @@ import java.util.List;
 public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
 
     @Query(
-            value = "SELECT * FROM ATTENDANCE WHERE MEMBER_ID = ?1 AND DATE >= ?2 AND DATE < ?3",
+            value = "SELECT * FROM attendance WHERE MEMBER_ID = ?1 AND DATE >= ?2 AND DATE < ?3",
             nativeQuery = true
     )
-    List<Attendance> findAllByMemberBetweenDate(long userid, LocalDate lower, LocalDate upper);
+    List<Attendance> findAllByMemberBetweenDate(long id, LocalDate lower, LocalDate upper);
 
 }

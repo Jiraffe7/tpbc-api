@@ -1,7 +1,6 @@
 package org.tpbc.tpbcapi.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.tpbc.tpbcapi.entity.Attendance;
 import org.tpbc.tpbcapi.entity.Member;
 import org.tpbc.tpbcapi.repository.MemberRepository;
@@ -27,7 +26,6 @@ public class MemberService {
         return memberRepository.findById(id);
     }
 
-    @Transactional
     public List<Attendance> getMemberAttendance(long id) {
         return memberRepository.findById(id)
                 .map(Member::getAttendance)

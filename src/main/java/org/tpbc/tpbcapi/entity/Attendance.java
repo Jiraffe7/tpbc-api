@@ -18,7 +18,8 @@ public class Attendance {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attendance-sequence")
+    @SequenceGenerator(name = "attendance-sequence", sequenceName = "attendance_sequence")
     private long id;
 
     private OffsetDateTime date;

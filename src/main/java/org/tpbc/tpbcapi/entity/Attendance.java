@@ -3,6 +3,7 @@ package org.tpbc.tpbcapi.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -24,6 +25,7 @@ public class Attendance {
 
     private OffsetDateTime date;
 
+    @ToString.Exclude
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;

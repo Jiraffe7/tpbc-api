@@ -46,4 +46,8 @@ public class MemberService {
     public List<Attendance> getMemberAttendanceBetween(long id, LocalDate lower, LocalDate upper) {
         return attendanceRepository.findAllByMemberBetweenDate(id, lower, upper);
     }
+
+    public List<Member> getMembersNotPresentBetween(LocalDate lower, LocalDate upper) {
+        return memberRepository.findAllMembersNotPresentBetween(lower, upper);
+    }
 }

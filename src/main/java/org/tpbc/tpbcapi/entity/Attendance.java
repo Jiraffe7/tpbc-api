@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -21,6 +22,7 @@ public class Attendance {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attendance-sequence")
     @SequenceGenerator(name = "attendance-sequence", sequenceName = "attendance_sequence")
+    @ColumnDefault("nextval(attendance_sequence)")
     private long id;
 
     private OffsetDateTime date;
